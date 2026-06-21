@@ -1,0 +1,7 @@
+name = "Dendrite"
+license = "MIT"
+description = "Minimal dark blog theme for Dendrite / HackVault build logs."
+homepage = "https://blog.hakvault.com"
+tags = ["blog", "dark", "minimal", "infosec"]
+features = ["rss"]
+min_version = "0.120.0"

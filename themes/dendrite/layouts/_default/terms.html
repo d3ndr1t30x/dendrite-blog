@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="hero hero-compact">
+  <p class="hero-eyebrow">// index</p>
+  <h1 class="hero-title">{{ .Title }}</h1>
+</section>
+
+<div class="tag-cloud">
+  {{ range .Pages }}
+  <a href="{{ .Permalink }}" class="tag-pill tag-pill-lg">{{ .Title }} <span class="tag-count">{{ len .Pages }}</span></a>
+  {{ end }}
+</div>
+{{ end }}

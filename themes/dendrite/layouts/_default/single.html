@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <a href="{{ "/" | absURL }}" class="back-link">← all posts</a>
+    <div class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      {{ if .Params.readingTime }}<span class="meta-sep">·</span><span>{{ .Params.readingTime }}</span>{{ else }}<span class="meta-sep">·</span><span>{{ .ReadingTime }} min read</span>{{ end }}
+    </div>
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{ with .Params.tags }}
+    <div class="post-tags">
+      {{ range . }}<a href="{{ "/tags/" | absURL }}{{ . | urlize }}/" class="tag-pill">{{ . }}</a>{{ end }}
+    </div>
+    {{ end }}
+  </header>
+
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <a href="{{ "/" | absURL }}" class="ghost-btn">← back to all posts</a>
+  </footer>
+</article>
+{{ end }}

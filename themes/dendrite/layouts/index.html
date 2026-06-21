@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="hero">
+  <p class="hero-eyebrow">// build log</p>
+  <h1 class="hero-title">Notes from building Dendrite &amp; HackVault.</h1>
+  <p class="hero-sub">{{ .Site.Params.description }}</p>
+</section>
+
+<section class="post-list">
+  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+  {{ range $paginator.Pages }}
+  <article class="post-card">
+    <a href="{{ .Permalink }}" class="post-card-link">
+      <div class="post-card-top">
+        <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        {{ with .Params.tags }}
+        <div class="post-tags">
+          {{ range . }}<span class="tag-pill">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <h2 class="post-card-title">{{ .Title }}</h2>
+      {{ if .Description }}
+      <p class="post-card-excerpt">{{ .Description }}</p>
+      {{ else }}
+      <p class="post-card-excerpt">{{ .Summary }}</p>
+      {{ end }}
+      <span class="post-card-readmore">read entry →</span>
+    </a>
+  </article>
+  {{ else }}
+  <p class="empty-state">No posts yet. First one's coming.</p>
+  {{ end }}
+</section>
+
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination" aria-label="Post pagination">
+  {{ if $paginator.HasPrev }}
+  <a href="{{ $paginator.Prev.URL }}" class="ghost-btn">← newer</a>
+  {{ end }}
+  <span class="pagination-status">page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+  {{ if $paginator.HasNext }}
+  <a href="{{ $paginator.Next.URL }}" class="ghost-btn">older →</a>
+  {{ end }}
+</nav>
+{{ end }}
+{{ end }}

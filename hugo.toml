@@ -1,0 +1,48 @@
+baseURL = "https://blog.hakvault.com/"
+languageCode = "en-us"
+title = "Dendrite // Log"
+theme = "dendrite"
+
+# Pagination
+[pagination]
+  pagerSize = 10
+
+# Permalinks — clean dated archive structure
+[permalinks]
+  posts = "/:year/:month/:slug/"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[params]
+  description = "Build logs, writeups, and notes from the Dendrite / HackVault infosec project."
+  author = "Dendrite"
+  skullEmoji = "💀"
+  brandName = "DENDRITE"
+  brandSub = "/ log"
+
+  # Social links — reused across the site
+  [params.social]
+    youtube = "https://www.youtube.com/@d3ndr1t30x"
+    instagram = "https://www.instagram.com/d3ndr1t30x/"
+    facebook = "https://www.facebook.com/D3ndr1t30x"
+    hackvault = "https://hakvault.com"
+    revshells = "https://revshells.hakvault.com"
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+  [markup.goldmark.renderer]
+    unsafe = true   # allow raw HTML in markdown if ever needed
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
