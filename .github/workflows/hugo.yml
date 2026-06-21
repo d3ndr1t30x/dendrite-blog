@@ -44,7 +44,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://blog.hakvault.com/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
